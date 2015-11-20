@@ -1,0 +1,9 @@
+{
+  "name": "sampleserver",
+  "description": "jxfvgbJHBgfSDf",
+  "author": "kSHFDbvgkshdbgksd",
+  "engine": "node 0.10",
+  "dependencies": {
+    "nodejs-websocket": "^1.4.0"
+  }
+}
