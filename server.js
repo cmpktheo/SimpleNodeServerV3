@@ -1,10 +1,10 @@
 var http = require("http")
-var ws = require("./nodejs-websocket/index.js")
+var ws = require("index.js")
 var fs = require("fs")
 
 http.createServer(function (req, res) {
 	fs.createReadStream("index.html").pipe(res)
-}).listen(8080)
+}).listen(process.env.OPENSHIFT_INTERNAL_PORT)
 
 var server = ws.createServer(function (connection) {
 	connection.nickname = null
@@ -19,7 +19,7 @@ var server = ws.createServer(function (connection) {
 		broadcast(connection.nickname+" left")
 	})
 })
-server.listen(8081)
+server.listen(process.env.OPENSHIFT_INTERNAL_PORT + 1)
 
 function broadcast(str) {
 	server.connections.forEach(function (connection) {
