@@ -2,9 +2,11 @@ var http = require("http")
 var ws = require("index.js")
 var fs = require("fs")
 
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
+
 http.createServer(function (req, res) {
 	fs.createReadStream("index.html").pipe(res)
-}).listen(process.env.OPENSHIFT_INTERNAL_PORT)
+}).listen(port)
 
 var server = ws.createServer(function (connection) {
 	connection.nickname = null
@@ -19,7 +21,7 @@ var server = ws.createServer(function (connection) {
 		broadcast(connection.nickname+" left")
 	})
 })
-server.listen(process.env.OPENSHIFT_INTERNAL_PORT + 1)
+server.listen(port + 1)
 
 function broadcast(str) {
 	server.connections.forEach(function (connection) {
