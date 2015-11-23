@@ -1,5 +1,5 @@
 var http = require("http")
-var ws = require("index.js")
+var ws = require("./index")
 var fs = require("fs")
 
 http.createServer(function (req, res) {

@@ -1,5 +1,5 @@
 var http = require("http")
-var ws = require("index.js")
+var ws = require("./nodejs-websocket/index")
 var fs = require("fs")
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
